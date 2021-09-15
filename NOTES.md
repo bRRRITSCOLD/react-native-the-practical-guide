@@ -6,6 +6,7 @@
 3. [https://reactnative.dev/docs/flexbox](https://reactnative.dev/docs/flexbox)
 4. [https://academind.com/tutorials/react-hooks-introduction](https://academind.com/tutorials/react-hooks-introduction)
 5. [https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/hooks-intro.html)
+6. [https://developer.chrome.com/docs/devtools/](https://developer.chrome.com/docs/devtools/)
 
 [ -d "$HOME/Library/Android/sdk" ] && ANDROID_SDK=$HOME/Library/Android/sdk || ANDROID_SDK=$HOME/Android/Sdk
 echo "export ANDROID_SDK=$ANDROID_SDK" >> ~/`[[ $SHELL == *"zsh" ]] && echo '.zshenv' || echo '.bash_profile'`
