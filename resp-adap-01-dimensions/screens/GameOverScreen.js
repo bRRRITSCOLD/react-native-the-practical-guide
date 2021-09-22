@@ -6,7 +6,7 @@ import {
   Button,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
 import BodyText from '../components/BodyText';
@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 10
   },
   imageContainer: {
     width: Dimensions.get('window').width * 0.7,
