@@ -16,6 +16,11 @@
 13. [https://facebook.github.io/react-native/docs/dimensions#docsNav](https://facebook.github.io/react-native/docs/dimensions#docsNav)
 14. [https://facebook.github.io/react-native/docs/platform-specific-code](https://facebook.github.io/react-native/docs/platform-specific-code)
 15. [https://reactnavigation.org/docs/4.x/getting-started](https://reactnavigation.org/docs/4.x/getting-started)
+16. [https://icons.expo.fyi/](https://icons.expo.fyi/)
+17. [https://reactnavigation.org/docs/bottom-tab-navigator/](https://reactnavigation.org/docs/bottom-tab-navigator/)
+18. [https://reactnavigation.org/docs/material-top-tab-navigator/](https://reactnavigation.org/docs/material-top-tab-navigator/)
+19. [https://reactnavigation.org/docs/material-bottom-tab-navigator/](https://reactnavigation.org/docs/material-bottom-tab-navigator/)
+20. [https://reactnavigation.org/docs/drawer-navigator/](https://reactnavigation.org/docs/drawer-navigator/)
 
 [ -d "$HOME/Library/Android/sdk" ] && ANDROID_SDK=$HOME/Library/Android/sdk || ANDROID_SDK=$HOME/Android/Sdk
 echo "export ANDROID_SDK=$ANDROID_SDK" >> ~/`[[ $SHELL == *"zsh" ]] && echo '.zshenv' || echo '.bash_profile'`
@@ -315,3 +320,32 @@ This alternative is of course a bit shorter, other than that, it has no advantag
 
 Throughout the course, I'll use both alternatives.
 
+Header Buttons: Using the Correct Version
+In the next lecture, we'll add a package named "react-navigation-header-buttons".
+
+In order to avoid errors, make sure you're using the correct version of that package => Version 6
+
+You can install that via npm install --save react-navigation-header-buttons@6
+
+(instead of just npm install --save react-navigation-header-buttons which I use in the next lecture)
+
+navigationOptions inside of a Navigator
+When defining a navigator, you can also add navigationOptions to it:
+
+const SomeNavigator = createStackNavigator({
+    ScreenIdentifier: SomeScreen
+}, {
+    navigationOptions: {
+        // You can set options here!
+        // Please note: This is NOT defaultNavigationOptions!
+    }
+});
+Don't mistake this for the defaultNavigationOptions which you could also set there (i.e. in the second argument you pass to createWhateverNavigator()).
+
+The navigationOptions you set on the navigator will NOT be used in its screens! That's the difference to defaultNavigationOptions - those option WILL be merged with the screens.
+
+So what's the use of navigationOptions in that place then?
+
+The options become important once you use the navigator itself as a screen in some other navigator - for example if you use some stack navigator (created via createStackNavigator()) in a tab navigator (e.g. created via createBottomTabNavigator()).
+
+In such a case, the navigationOptions configure the "nested navigator" (which is used as a screen) for that "parent navigator". For example, you can use navigationOptions on the nested navigator that's used in a tab navigator to configure the tab icons.
