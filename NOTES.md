@@ -21,6 +21,7 @@
 18. [https://reactnavigation.org/docs/material-top-tab-navigator/](https://reactnavigation.org/docs/material-top-tab-navigator/)
 19. [https://reactnavigation.org/docs/material-bottom-tab-navigator/](https://reactnavigation.org/docs/material-bottom-tab-navigator/)
 20. [https://reactnavigation.org/docs/drawer-navigator/](https://reactnavigation.org/docs/drawer-navigator/)
+21. [https://academind.com/tutorials/reactjs-redux-vs-context-api](https://academind.com/tutorials/reactjs-redux-vs-context-api)
 
 [ -d "$HOME/Library/Android/sdk" ] && ANDROID_SDK=$HOME/Library/Android/sdk || ANDROID_SDK=$HOME/Android/Sdk
 echo "export ANDROID_SDK=$ANDROID_SDK" >> ~/`[[ $SHELL == *"zsh" ]] && echo '.zshenv' || echo '.bash_profile'`
@@ -427,3 +428,22 @@ useCallback() helps you prevent this.
 By wrapping it around a function declaration and defining the dependencies of the function, it ensures that the function is only re-created if its dependencies changed.
 
 Hence the function is NOT re-built on every render cycle anymore => You break out of the infinite loop!
+
+Debugging Redux in React Native Apps
+You can debug Redux in React Native apps with help of the React Native Debugger tool: https://github.com/jhen0409/react-native-debugger/blob/master/docs/redux-devtools-integration.md
+
+1) Make sure you got the React Native Debugger installed (https://github.com/jhen0409/react-native-debugger)
+
+2) Enable JS Debugging in the running app (open development overlay via CTRL + M / CMD + M on Android devices, CMD + D on iOS devices)
+
+3) Install the redux-devtools-extension package via npm install --save-dev redux-devtools-extension (https://www.npmjs.com/package/redux-devtools-extension)
+
+4) Enable Redux debugging in your code:
+
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+ 
+const store = createStore(reducer, composeWithDevTools());
+Important: Make sure you remove this code when building your app for production!
+
+You'll see this approach in action in the Shop App course module ("Adding Items to the Cart" lecture)!
